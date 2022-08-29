@@ -1,0 +1,205 @@
+\documentclass[12pt]{report}
+\usepackage[spanish]{babel}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+{\bfseries\LARGE UNIVERSIDAD DEL CAUCA \par}
+\vspace{1cm}
+{\scshape\Huge Ecuaciones de Bessel y Legendre\par}
+\vspace{3cm}
+{\itshape\Large Proyecto Ecuaciones Diferenciales \par}
+\vfill
+{\Large Presentado por :\par}
+{\large Juan Esteban Rivera Cortes \par}
+\vfill
+{\large Agosto 2022 \par}
+\end{titlepage}
+\tableofcontents
+
+\chapter{Ecuaciones de Bessel}
+
+Una Ecuaci\'on de Bessel de orden v tiene la forma:
+\begin{equation}
+x^{2}y^{''}+xy{'}+(x^{2}-v^{2})=0
+\end{equation}
+Para hallar las soluciones de la ecuaci\'on $(1.1)$, haremos desarrollo en series de potencias.\\
+Como el punto x=0 es un punto singular regular de la ecuacion de Bessel, indica que admite solucion en serie de potencias de la forma:\\
+\vspace{0.3 cm}
+$y=\sum_{n=0}^{\infty}c_{n}x^{n+r},$derivando: $y^{'}=\sum_{n=0}^{\infty}c_{n}(n+r)x^{n+r-1}$,\\
+\vspace{0.3 cm}
+$y^{''}=\sum_{n=0}^{\infty}c_{n}(n+r)(n+r+1)x^{n+r-2}$ \\
+\vspace{0.3 cm}
+al sustituir en $(1.1)$\\
+\vspace{0.3 cm}
+$x^{2}y^{''}+xy{'}+(x^{2}-v^{2})=x^{2}\sum_{n=2}^{\infty}c_{n}(n+r)(n+r+1)x^{n+r-2}+$\\$x\sum_{n=1}^{\infty}c_{n}(n+r)x^{n+r-1}+(x^{2}-v^{2})\sum_{n=0}^{\infty}c_{n}x^{n+r}$\\
+\vspace{0.3 cm}
+$=\sum_{n=0}^{\infty}c_{n}(n+r)(n+r-1)x^{n+r}+\sum_{n=0}^{\infty}c_{n}(n+r)x^{n+r}+\sum_{n=0}^{\infty}c_{n}x^{n+r+2}-v^{2}\sum_{n=0}^{\infty}c_{n}x^{n+r}$\\
+\vspace{0.3 cm}
+$=c_{0}(r^{2}-r+r-v^{2})x^{r}+x^{r}\sum_{n=1}^{\infty}c_{n}[(n+r)(n+r-1)+(n+r)-v^{2}]x^{n}+x^{r}\sum_{n=0}^{\infty}c_{n}x^{n+2}$\\
+\vspace{0.3 cm}
+$=c_{0}(r^{2}-v^{2})x^{r}+x^{r}\sum_{n=1}^{\infty}c_{n}[(n+r)^{2}-v^{2}]x^{n}+x^{r}\sum_{n=0}^{\infty}c_{n}x^{n+2}$\\
+\vspace{0.3 cm}
+por tanto la ecuacion indicial es: $r^{2}-v^{2}=0$ y las raices indiciales son $r_{1}=v$ y $r_{2}=-v$, si r toma el valor v,
+al resolver el cuadrado,simplificar y factorizar, se obtiene:\\
+\begin{center}
+$x^{v}\sum_{n=1}^{\infty}c_{n}n(n+2v)x^{n}+x^{v}\sum_{n=0}^{\infty}c_{n}x^{n+2}$\vspace{0,5cm}
+$x^{v}[(1+2v)c_{1}x+\sum_{n=2}^{\infty}c_{n}n(n+2v)x^{n}+\sum_{n=0}^{\infty}c_{n}x^{n+2}]$
+\end{center}
+haciendo las siguientes sustituciones $k=n-2$ y $k=n$ respectivamente, se obtiene:
+\begin{center}
+$x^{v}[(1+2v)c_{1}x+\sum_{k=0}^{\infty}[c_{k+2}(k+2)(k+2+2v)+c_{k}]x^{k+2}]$
+\end{center}
+dado que $(1+2v)c_{1}x=0$ se obtiene que $c_{1}=0,$ al despejar $c_{k+2}$, se tiene:
+\begin{center}
+$c_{k+2}=\frac{-c_{k}}{(k+2)(k+2+2v)}, \,para\,k=0,1,2,...$
+\end{center}
+realizando las iteraciones:\\
+\begin{center}
+$c_{2}=\frac{-c_{0}}{(2)(2+2v)}=\frac{-c_{0}}{2^{2}(1+v)}$\\
+\vspace{0.5cm}
+$c_{3}=\frac{-c_{1}}{(3)(3+2v)}=0$
+\vspace{0.5cm}\\
+$c_{4}=\frac{-c_{2}}{(4)(4+2v)}=\frac{c_{0}}{2^{4}1\cdot 2(1+v)(2+v)}$
+\vspace{0.5cm}\\
+$c_{5}=\frac{-c_{3}}{(5)(5+2v)}=0$
+\vspace{0.5cm}\\
+$c_{6}=\frac{-c_{4}}{(6)(6+2v)}=\frac{-c_{0}}{2^{6}1\cdot 2\cdot 3(1+v)(2+v)(3+v)}$
+\vspace{0.5cm}\\
+\end{center}
+en general, se tienen solo los coheficientes pares:\\
+\begin{equation}
+c_{2k}=\frac{(-1)^{k}c_{0}}{2^{2k}k!(1+v)(2+v)\cdots (k+v)}
+\end{equation}\\
+tomando:
+\begin{equation}
+c_{0}=\frac{1}{2^{v}\Gamma (1+v)}
+\end{equation}
+al sustituir $(1.3)$ en $(1.2)$ y hacer $n=k$
+\begin{equation}
+c_{2n}=\frac{(-1)^{n}}{2^{2n+v}n!(1+v)(2+v)\cdots (n+v)\Gamma(1+v)}
+\end{equation}
+se sabe que la funcion Gamma tiene la propiedad:\\
+\begin{equation}
+x\Gamma(x)=\Gamma(x+1)
+\end{equation}
+\vspace{0.3 cm}
+ de esta manera aplicando $(1.5)$ de forma iterativa:\\
+ \vspace{0.3 cm}
+ $(n+v)\cdots(2+v)(1+v)\Gamma(1+v)$\\
+ \vspace{0.3 cm}
+ $=(n+v)\cdots(2+v)\Gamma(2+v+1)$\\
+ \vspace{0.3 cm}
+ $=(n+v)\cdots(3+v)\Gamma(3+v+1)$\\
+ \vspace{0.3 cm}
+ en general se tiene:\\
+ \vspace{0.3 cm}
+ $=\Gamma(n+v+1)$\\
+ \vspace{0.3 cm}
+ sustituyendo en $(1.4)$, se obtiene:\\
+ \vspace{0.3 cm}
+$ c_{2n}=\frac{(-1)^{n}}{2^{2n+v}n!\Gamma(n+v+1)}$\\
+a la funci\'on que se forma por $y=\sum_{n=0}^{\infty}c_{2n}x^{2n+v}$, la llamaremos:\\
+\begin{center}
+$J_{v}(x)=\sum_{n=0}^{\infty}\frac{(-1)^{n}}{n!\Gamma(n+v+1)}(\frac{x}{2})^{2n+v}$
+\end{center}
+ si $v>0$ y converge en el intervalo $(0,\infty)$\\
+ de aqu\'i podemos hallar la solucion correspondiente a $r_{2}=-v$\\
+\begin{center}
+$J_{-v}(x)=\sum_{n=0}^{\infty}\frac{(-1)^{n}}{n!\Gamma(n-v+1)}(\frac{x}{2})^{2n-v}$\\
+ 
+\end{center}
+para plantear la solucion general se deben atender dos casos:\\
+CASO I.\\
+$r_{1}-r_{2}=2v$ un n\'umero no entero\\
+aqu\'i la soluci\'on general seria $y=c_{1}J_{v}(x)+c_{2}J_{-v}(x)$\\
+CASO II\\
+$r_{1}-r_{2}=2v$ un n\'umero entero\\
+para ello se podrian presentar dos posibilidades\\
+que v=m sea un entero,en este caso podria existir una solucion de la forma:\\
+\begin{center}
+$y_{1}(x)=\sum_{n=0}^{\infty}c_{n}x^{n+r_{1}}$  con   $c_{0}\neq 0$\\
+$y_{2}=Cy_{1}lnx+\sum_{n=0}^{\infty}b_{n}x^{n+r_{2}}$ con $b_{0}\neq 0$
+\end{center}
+tambien se puede dar el caso donde v es la mitad de un entero impar, cuyo caso no tendria ningun problema ya que $J_{v}$ y $J_{-v}$ son linalmente independientes.\\
+por tanto la soluci\'on de $(1.1)$ es\\
+\begin{equation}
+y=c_{1}J_{v}(x)+c_{2}J_{-v}(x)\,si\,\,v\,\,no\,\,es\,\,un\,\,entero
+\end{equation}\\
+\section{Apliaciones}
+\subsection{Ecuaciones Diferenciales}
+Permite transformar algunas ecuaciones diferenciales de orden 2, para poder estudiar problemas en la frontera
+\subsection{Musica}
+Sirven para representar la defleccion de un instrumento de precusion que es sometido a una vibracion
+\subsection{Ingenieria Civil}
+Sirven para representar la vibracion de estructuras con amortiguacion sometidas a fuerzas externas 
+\subsection{Fisica}
+Sirven para represtar la solucion de la ecuacion de schrodinger,campos electricos y mecanica cuantica
+\chapter{Ecuaciones de Legendre}
+la ecuaci\'on de legendre de orden n tiene la forma:\\
+\begin{equation}
+(1-x^{2})y^{''}-2xy^{'}+n(n+1)y=0
+\end{equation}
+para la solucion de esta ecuaci\'on, primero analicemos que  el punto $x=0$ es un punto ordinario, por tanto admite solucion en series de potencias de la forma:\\
+\vspace{0.3cm}
+$y=\sum_{k=o}^{\infty}c_{k}x^{k}$, derivando\\
+\vspace{0.3cm}
+$y^{'}=\sum_{k=1}^{\infty}c_{k}kx^{k-1}$\\
+\vspace{0.3cm}
+$y^{''}=\sum_{k=2}^{\infty}c_{k}k(k-1)x^{k-2}$\\
+\vspace{0.3cm}
+sustituyendo en la ecuci\'on $(2.1)$ se tiene:\\
+\vspace{0.3cm}
+$(1-x^{2})\sum_{k=2}^{\infty}c_{k}k(k-1)x^{k-2}-2x\sum_{k=1}^{\infty}c_{k}kx^{k-1}+n(n+1)\sum_{k=o}^{\infty}c_{k}x^{k}=0$\\
+\vspace{0.3cm}
+$=\sum_{k=2}^{\infty}c_{k}k(k-1)x^{k-2}-x^{2}\sum_{k=2}^{\infty}c_{k}k(k-1)x^{k-2}-2x\sum_{k=1}^{\infty}c_{k}kx^{k-1}$\\
+\vspace{0.3cm}
+$+n(n+1)\sum_{k=o}^{\infty}c_{k}x^{k}$\\
+\vspace{0.3cm}
+$=\sum_{k=2}^{\infty}c_{k}k(k-1)x^{k-2}-\sum_{k=2}^{\infty}c_{k}k(k-1)x^{k}-2\sum_{k=1}^{\infty}c_{k}kx^{k}$\\
+\vspace{0.3cm}
+$+n(n+1)\sum_{k=o}^{\infty}c_{k}x^{k}$\\
+\vspace{0.3cm}
+al igualar las potencias de x y los indices de la sumatoria obtenemos:\\
+\vspace{0.3cm}
+$=[n(n+1)c_{0}+2c_{2}]+[(n-1)(n+2)c_{1}+6c_{3}]x+$\\
+\vspace{0.3cm}
+$\sum_{k=2}^{\infty}[(k+2)(k+1)c_{k+2}+(n-k)(n+k+1)c_{k}]x^{k}=0$\\
+\vspace{0.3cm}
+como se busca que los coheficientes sean cero,se tiene:\\
+\vspace{0.3cm}
+$n(n+1)c_{0}+2c_{2}=0\rightarrow c_{2}=\frac{-n(n+1)c_{0}}{2!}$\\
+\vspace{0.3cm}
+$(n-1)(n+2)c_{1}+6c_{3}=0\rightarrow c_{3}=\frac{-(n-1)(n+2)c_{1}}{3!}$\\
+\vspace{0.3cm}
+$(k+2)(k+1)c_{k+2}+(n-k)(n+k+1)c_{k}\rightarrow c_{k+2}=\frac{-(n-k)(n+k+1)c_{k}}{(k+2)(k+1)}$ para $k=2,3,4,...$\\
+\vspace{0.3cm}
+aplicando la relaci\'on de recurrencia:\\
+\vspace{0.3cm}
+$c_{4}=-\frac{(n-2)(n+3)}{4\cdot3}c_{2}=\frac{(n-2)n(n+1)(n+3)}{4!}c_{0}$\\
+\vspace{0.3cm}
+$c_{5}=-\frac{(n-3)(n+4)}{5\cdot4}c_{3}=\frac{(n-3)(n-1)(n+2)(n+4)}{5!}c_{1}$\\
+\vspace{0.3cm}
+$c_{6}=-\frac{(n-4)(n+5)}{6\cdot5}c_{4}=-\frac{(n-4)(n-2)n(n+1)(n+3)(n+5)}{6!}c_{0}$\\
+\vspace{0.3cm}
+$c_{7}=-\frac{(n-5)(n+6)}{7\cdot6}c_{5}=-\frac{(n-5)(n-3)(n-1)(n+2)(n+4)(n+6)}{7!}c_{1}$\\
+la serie de potencias converge para $|x|<1$\\
+\vspace{0.3cm}
+de este modo, las dos soluciones linealmente independientes son:\\
+\vspace{0.3cm}
+$y_{1}(x)=c_{0}[1-\frac{n(n+1)}{2!}x^{2}+\frac{(n-2)n(n+1)(n+3)}{4!}x^{4}-\frac{(n-4)(n-2)n(n+1)(n+3)(n+5)}{6!}x^{6}+\cdots]$\\
+\vspace{0.3cm}
+$y_{2}(x)=c_{1}[x-\frac{(n-1)(n+2)}{3!}x^{3}+\frac{(n-3)(n-1)(n+2)(n+4)}{5!}x^{5}-\frac{(n-5)(n-3)(n-1)(n+2)(n+4)(n+6)}{7!}x^{7}\cdots]$\\
+hay que notar en ambas soluciones que dependiendo del valor de n, una de las dos soluciones sera un polinomio con una cantidad finita de t\'erminos\\.
+\section{Aplicaciones}
+\subsection{Fisica}
+Permite expresar la factorizacion del operador hamiltoniano y generalizando estos operadores usados en la fisica cuantica
+\subsection{Matematicas}
+Permite representar Armonicos esfericos 
+\begin{thebibliography}{0}
+\bibitem{Denis G. zill 2009}Denis G. Zill.ecuaciones Diferenciales con aplicaciones de modelado,2009
+\bibitem{Lorena Terrios}Lorena terrios.Notas de Ecuaciones Diferenciales,Universidad del Cauca.
+\bibitem{internet}https://http://mauricioanderson.com/curso-latex-introduccion-instalacion-estructura/
+\end{thebibliography}
+\end{document}
